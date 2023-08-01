@@ -1,0 +1,47 @@
+{
+	"name": "@softstack/joi-bigint",
+	"version": "1.0.0",
+	"description": "Joi extension for bigint",
+	"license": "MIT",
+	"author": "Softstack GmbH <hello@softstack.io> (https://softstack.io)",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/softstackhq/joi-bigint"
+	},
+	"homepage": "https://github.com/softstackhq/joi-bigint#readme",
+	"keywords": [
+		"joi",
+		"bigint"
+	],
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"files": [
+		"lib/**/*"
+	],
+	"scripts": {
+		"test": "jest --config jestconfig.json",
+		"build": "tsc",
+		"prettier": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+		"lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+		"prepare": "rm ./lib/* -rf && npm run build",
+		"prepublishOnly": "npm test && npm run lint",
+		"preversion": "npm test && npm run lint",
+		"version": "npm run prettier && git add -A src",
+		"postversion": "git push && git push --tags"
+	},
+	"peerDependencies": {
+		"joi": ">=17"
+	},
+	"devDependencies": {
+		"@types/jest": "^29.5.3",
+		"@typescript-eslint/eslint-plugin": "^6.2.1",
+		"@typescript-eslint/parser": "^6.2.1",
+		"eslint": "^8.46.0",
+		"jest": "^29.6.2",
+		"joi": "^17.9.2",
+		"prettier": "^3.0.0",
+		"ts-jest": "^29.1.1",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.1.6"
+	}
+}
