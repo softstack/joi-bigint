@@ -1,6 +1,6 @@
 {
 	"name": "@softstack/joi-bigint",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Joi extension for bigint",
 	"license": "MIT",
 	"author": "Softstack GmbH <hello@softstack.io> (https://softstack.io)",
