@@ -1,15 +1,19 @@
+# joi-bigint
+
 Joi extension for bigint
 
-Converts number and string.
-The supported rules are: greater, less, max, min, multiple, negative, port, positive and sign
+## Features
+
+- Converts number and string.
+- The supported rules are: greater, less, max, min, multiple, negative, port, positive and sign
 
 ## Usage
 
 ```typescript
 import BaseJoi from 'joi';
-import { joiBigint } from '@softstack/joi-bigint';
+import { extendJoi } from '@softstack/joi-bigint';
 
-const Joi = BaseJoi.extend(joiBigint);
+const Joi = extendJoi(BaseJoi);
 const schema = Joi.bigint().min(3n).required();
 
 const result1 = schema.validate(3n);

@@ -1,4 +1,5 @@
-import { ExtensionFactory } from 'joi';
+import { ExtensionFactory, Root } from 'joi';
+import { BigIntSchema } from './types';
 
 const isBigint = (value: unknown) => typeof value === 'bigint';
 
@@ -24,7 +25,6 @@ export const joiBigint: ExtensionFactory = (joi) => ({
 				// eslint-disable-next-line no-empty
 			} catch {}
 		}
-
 		return { value };
 	},
 	validate(value, helpers) {
@@ -148,9 +148,13 @@ export const joiBigint: ExtensionFactory = (joi) => ({
 				{
 					name: 'sign',
 					assert: (value) => ['negative', 'positive'].includes(value),
-					message: 'must be a "negative" or "positive"',
+					message: 'must be "negative" or "positive"',
 				},
 			],
 		},
 	},
 });
+
+export const extendJoi = <T extends Root>(baseJoi: T): T & { bigint<U = bigint>(): BigIntSchema<U> } => {
+	return baseJoi.extend(joiBigint);
+};

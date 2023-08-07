@@ -1,7 +1,7 @@
 import BaseJoi from 'joi';
-import { joiBigint } from '../index';
+import { extendJoi } from '../index';
 
-const Joi = BaseJoi.extend(joiBigint);
+const Joi = extendJoi(BaseJoi);
 const schema = Joi.bigint().min(3n).required();
 
 const result1 = schema.validate(3n);

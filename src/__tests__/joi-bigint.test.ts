@@ -1,7 +1,7 @@
 import BaseJoi from 'joi';
-import { joiBigint } from '../index';
+import { extendJoi } from '../index';
 
-const Joi = BaseJoi.extend(joiBigint);
+const Joi = extendJoi(BaseJoi);
 
 test('Value should be bigint', () => {
 	const schema = Joi.bigint().prefs({ convert: false }).required();
@@ -15,6 +15,14 @@ test('Value should be converted to bigint', () => {
 	expect(schema.validate(3n)).not.toHaveProperty('error');
 	expect(schema.validate(3)).not.toHaveProperty('error');
 	expect(schema.validate('3')).not.toHaveProperty('error');
+
+	expect(schema.validate(-1)).not.toHaveProperty('error');
+	expect(schema.validate(0)).not.toHaveProperty('error');
+	expect(schema.validate(1)).not.toHaveProperty('error');
+
+	expect(schema.validate('-1')).not.toHaveProperty('error');
+	expect(schema.validate('0')).not.toHaveProperty('error');
+	expect(schema.validate('1')).not.toHaveProperty('error');
 });
 
 test('Value should be greater than 3', () => {
