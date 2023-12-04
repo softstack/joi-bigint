@@ -1,6 +1,8 @@
 import { ExtensionFactory, Root } from 'joi';
 import { BigIntSchema } from './types';
 
+export * from './types';
+
 const isBigint = (value: unknown) => typeof value === 'bigint';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
