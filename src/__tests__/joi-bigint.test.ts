@@ -23,6 +23,30 @@ test('Value should be converted to bigint', () => {
 	expect(schema.validate('-1')).not.toHaveProperty('error');
 	expect(schema.validate('0')).not.toHaveProperty('error');
 	expect(schema.validate('1')).not.toHaveProperty('error');
+
+	expect(typeof schema.validate(3n).value === 'bigint').toBeTruthy();
+	expect(typeof schema.validate(3).value === 'bigint').toBeTruthy();
+	expect(typeof schema.validate('3').value === 'bigint').toBeTruthy();
+
+	expect(typeof schema.validate(-1).value === 'bigint').toBeTruthy();
+	expect(typeof schema.validate(0).value === 'bigint').toBeTruthy();
+	expect(typeof schema.validate(1).value === 'bigint').toBeTruthy();
+
+	expect(typeof schema.validate('-1').value === 'bigint').toBeTruthy();
+	expect(typeof schema.validate('0').value === 'bigint').toBeTruthy();
+	expect(typeof schema.validate('1').value === 'bigint').toBeTruthy();
+
+	expect(schema.validate(3n).value === 3n).toBeTruthy();
+	expect(schema.validate(3).value === 3n).toBeTruthy();
+	expect(schema.validate('3').value === 3n).toBeTruthy();
+
+	expect(schema.validate(-1).value === -1n).toBeTruthy();
+	expect(schema.validate(0).value === 0n).toBeTruthy();
+	expect(schema.validate(1).value === 1n).toBeTruthy();
+
+	expect(schema.validate('-1').value === -1n).toBeTruthy();
+	expect(schema.validate('0').value === 0n).toBeTruthy();
+	expect(schema.validate('1').value === 1n).toBeTruthy();
 });
 
 test('Value should be greater than 3', () => {
